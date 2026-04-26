@@ -1,14 +1,13 @@
-:root {
+html {
+  font-size: 150%;
+}
+
+:root {/*全局正文字体设置为：霞鹜文楷屏幕版*/
     --md-text-font:  "LXGW WenKai Screen", sans-serif; 
     /* --md-code-font:  */
   }
 
-
-@font-face {    
-    font-family: 'LXGW';    
-    src: url('./LXGWWenKaiGBScreen.woff') format('woff');/*IE*/     
-}
-
+/*网页最大宽度*/
 .md-grid {
     max-width: 1280px;   
 }
@@ -16,7 +15,13 @@
 /* note warning等特殊提示框文本字体调节*/
 .md-typeset .admonition,
 .md-typeset details {
-    font-size: 15px
+    font-size: 17px
+}
+
+/*表格文字大小*/
+.md-typeset td,
+.md-typeset th {
+    font-size: 16px;
 }
 
 /* 浅色主题颜色修改*/
@@ -64,8 +69,3 @@ input.md-search__input {
 [data-md-color-scheme="slate"] .md-typeset .md-content__button {
   color: #555555;
 }
-
-.md-copyright {
-  font-size: .55rem;
-}
-
