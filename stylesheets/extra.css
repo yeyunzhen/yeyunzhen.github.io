@@ -1,15 +1,90 @@
-html {
-  font-size: 140%;
+.md-header {
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  background-color: var(--md-default-bg-color) !important;
+  box-shadow: none !important;
 }
 
-:root {/*全局正文字体设置为：霞鹜文楷屏幕版*/
-    --md-text-font:  "LXGW WenKai Screen", sans-serif; 
-    /* --md-code-font:  */
-  }
+.md-tabs {
+  overflow: visible !important; /* 关闭tabs容器溢出裁切，允许下划线往下伸出去 */
+  background-color: var(--md-default-bg-color) !important;
+  box-shadow: none !important;
+}
 
-/*网页最大宽度*/
-.md-grid {
-    max-width: 1280px;   
+[data-md-color-scheme="default"] .md-tabs {
+  /* 浅灰 #dddddd = rgb(221,221,221)，0.25透明度 */
+  border-bottom: 1px solid rgba(221, 221, 221, 0.4) !important;
+}
+[data-md-color-scheme="slate"] .md-tabs {
+  /* #323232 = rgb(50,50,50)，0.25透明度 */
+  border-bottom: 1px solid rgba(50, 50, 50, 0.4) !important;
+}
+
+/* 头部图标、文字跟随正文颜色，避免看不清 */
+.md-header__title,
+.md-header__button,
+.md-header__icon,
+.md-search__icon {
+  color: var(--md-default-fg-color) !important;
+}
+.md-search__inner {
+  background-color: var(--md-default-bg-color--light) !important;
+}
+
+/* ===================== 1、顶部 Header 区域放大 ===================== */
+/* 站点名称（左上角博客名）放大 */
+.md-header__title {
+  font-size: 1.15rem !important;  /* rem代表根元素的font size */
+}
+
+/* 顶部tabs导航（开了 navigation.tabs 才生效） */
+.md-tabs__link {
+  font-size: 0.75rem !important; /* 设置导航字体大小 */
+  position: relative; /* 激活下划线 */
+  padding-bottom: 14px !important; /* 给下方留出空间，防止下划线被挤没 */
+
+}
+
+/* 下划线基座 */
+.md-tabs__link::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -2px !important;
+  height: 3px !important;
+  border-radius: 2px !important;
+  background: transparent !important;
+  transition: background-color 0.2s ease !important;
+  z-index: 99999 !important;
+  pointer-events: none;
+}
+
+/* 当前页面激活的Tab显示实线下划线 */
+.md-tabs__item--active .md-tabs__link::after {
+  background-color: var(--md-typeset-a-color) !important;
+}
+
+/* 隐藏MkDocs原生自带下划线，防止两条线重叠冲突 */
+.md-tabs__indicator {
+  display: none !important;
+}
+
+/* 引入霞鹜文楷屏幕版 WebFont */
+@font-face {
+  font-family: "LXGW WenKai Screen";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-gb-screen@1.0.6/files/LXGWWenKaiScreen.woff2') format('woff2');
+}
+
+/* 全局字体变量 */
+:root {
+  --md-text-font: "LXGW WenKai Screen", system-ui, -apple-system, sans-serif;
+  /* 代码字体可选搭配等宽霞鹜文楷 */
+  --md-code-font: "LXGW WenKai Mono", Consolas, monospace;
 }
 
 /* note warning等特殊提示框文本字体调节*/
@@ -68,4 +143,20 @@ input.md-search__input {
 
 [data-md-color-scheme="slate"] .md-typeset .md-content__button {
   color: #555555;
+}
+
+/* 二级标题左侧竖线 */
+.md-toc__item[data-md-level="2"] {
+  position: relative;
+  padding-left: 18px !important; /* 让出竖线位置 */
+}
+.md-toc__item[data-md-level="2"]::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;           /* 竖线粗细 */
+  background-color: #94a3b8; /* 竖线颜色 */
+  border-radius: 1px;
 }
