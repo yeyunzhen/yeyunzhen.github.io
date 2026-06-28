@@ -76,7 +76,12 @@
   font-family: "LXGW WenKai Screen";
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  /* 不再swap，避免先大字体占位跳动 */
+  font-display: optional;
+  /* 强制约束字体上下范围，抹平不同字体高度差 */
+  ascent-override: 90%;
+  descent-override: 20%;
+  line-gap-override: 0%;
   src: url('https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-gb-screen@1.0.6/files/LXGWWenKaiScreen.woff2') format('woff2');
 }
 
