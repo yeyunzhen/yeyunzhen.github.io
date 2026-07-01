@@ -150,18 +150,7 @@ input.md-search__input {
   color: #555555;
 }
 
-/* 二级标题左侧竖线 */
-.md-toc__item[data-md-level="2"] {
-  position: relative;
-  padding-left: 18px !important; /* 让出竖线位置 */
-}
-.md-toc__item[data-md-level="2"]::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 4px;
-  bottom: 4px;
-  width: 2px;           /* 竖线粗细 */
-  background-color: #94a3b8; /* 竖线颜色 */
-  border-radius: 1px;
+/*播放器深色主体title设为黑色*/
+.aplayer {
+  color: rgba(0,0,0,0.87) !important;
 }
